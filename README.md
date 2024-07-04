@@ -19,8 +19,8 @@ This project fetches historical and daily stock data for the top 10 Indian compa
 
 1. Clone the repository:
 
-   git clone https://github.com/your-username/stock-data-fetcher.git
-
+   git clone https://github.com/its-GB/stock-data-fetcher.git
+   
 2. Change to the project directory:
 
    cd stock-data-fetcher

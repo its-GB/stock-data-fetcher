@@ -20,7 +20,7 @@ This project fetches historical and daily stock data for the top 10 Indian compa
 1. Clone the repository:
 
    git clone https://github.com/its-GB/stock-data-fetcher.git
-   
+
 2. Change to the project directory:
 
    cd stock-data-fetcher
@@ -78,6 +78,28 @@ db_file = stock_data.db
    This script fetches the daily data for the previous day and saves it to the SQLite database.
 
 The data will be saved to the specified SQLite database file (default: `stock_data.db`).
+
+## Running the Stock Data Queries
+1. Prerequisites
+
+   - Ensure you have SQLite installed on your system.
+   - Ensure you have a Python environment set up with the necessary dependencies for running the historical_stock_data.py or daily_stock_data.py script.
+
+2. Steps
+
+    1. Run the Python script to populate the stock_data.db database:
+        - Run either the historical_stock_data.py or daily_stock_data.py script to populate the stock_data.db SQLite database file with the stock data. This will create the stock_data.db file if it doesn't already exist.
+    2. Run the queries using a SQLite UI tool:
+        - Open a SQLite UI tool like DB Browser for SQLite or SQLiteStudio.
+        - Connect to the stock_data.db database file.
+        - Click on the "Execute SQL" button or menu option to open the SQL editor.
+        - Open the `sql_queries.sql` file and copy the contents.
+        - Paste the queries into the SQL editor.
+        - Click the "Execute" button to run the queries against the stock_data.db database.
+    3. View the query results:
+        - The query results will be displayed in the SQLite UI tool's results pane.
+        - You can save the query results to a file or export them to a CSV format for further analysis.
+
 
 ## Project Structure
 

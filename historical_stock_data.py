@@ -12,6 +12,8 @@ config = read_config()
 api_key = config.get('common', 'api_key')
 db_file = config.get('database', 'db_file')
 historical_url = config.get('api', 'historical_url')
+start_date = datetime.strptime(config.get('historical', 'start_date'), '%Y-%m-%d')
+end_date = datetime.strptime(config.get('historical', 'end_date'), '%Y-%m-%d')
 
 # Create the SQLite database and table
 conn, c = create_database(db_file)
@@ -30,21 +32,19 @@ for company_name, symbol in get_companies(config):
         try:
             date = datetime.strptime(row[0], '%Y-%m-%d')
         except ValueError:
-            try:
-                date = datetime.strptime(row[0], '%d-%b-%y')
-            except ValueError:
-                continue
+            continue
 
-        data = (
-            row[0],
-            company_name,
-            float(row[1]),
-            float(row[4]),
-            float(row[2]),
-            float(row[3]),
-            int(row[5])
-        )
-        insert_data(c, data)
+        if start_date <= date <= end_date:
+            data = (
+                row[0],
+                company_name,
+                float(row[1]),
+                float(row[4]),
+                float(row[2]),
+                float(row[3]),
+                int(row[5])
+            )
+            insert_data(c, data)
 
 commit_and_close(conn)
 
